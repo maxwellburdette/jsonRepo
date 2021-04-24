@@ -1,8 +1,15 @@
+/**
+ *	File: ajax.js (Gets JSON data rendered to DOM)
+    Server Side Development / Project: JSON
+    Maxwell Burdette / burdettm@csp.edu
+    04/22/2021 
+ */
+
 function getJSON() {
 	var form = document.getElementById("form")
 	console.log(form)
 	var thisRequest = new XMLHttpRequest()
-	thisRequest.open("GET", "priceDataNew.json", true)
+	thisRequest.open("GET", "priceData.json", true)
 	thisRequest.setRequestHeader("Content-type", "application/json", true)
 	thisRequest.onreadystatechange = function () {
 		if (thisRequest.readyState == 4 && thisRequest.status == 200) {
@@ -50,7 +57,7 @@ function createDataEntry(console, count) {
 	stockField.type = "text"
 	stockField.className = "form-control"
 	stockField.id = "stock" + count
-	stockField.placeholder = "Enter name of console"
+	stockField.placeholder = "Enter stock..."
 	stockField.value = stockData
 	stockField.name = "stock" + count
 	let stockLabel = document.createElement("label")
@@ -66,12 +73,12 @@ function createDataEntry(console, count) {
 	skuField.type = "text"
 	skuField.className = "form-control"
 	skuField.id = "sku" + count
-	skuField.placeholder = "Enter name of console"
+	skuField.placeholder = "Enter Sku...."
 	skuField.value = skuData
 	skuField.name = "sku" + count
 	let skuLabel = document.createElement("label")
 	skuLabel.htmlFor = "sku" + count
-	skuLabel.innerText = "Stock"
+	skuLabel.innerText = "Sku"
 	skuInput.appendChild(skuField)
 	skuInput.appendChild(skuLabel)
 
@@ -139,7 +146,7 @@ function createProducts(console) {
 	stockHeader.innerText = "Stock: " + stockData
 
 	let skuHeader = document.createElement("h5")
-	skyHeader = "SKU: " + skuData
+	skuHeader.innerText = "SKU: " + skuData
 
 	let descriptionHeader = document.createElement("h5")
 	descriptionHeader.innerText = "Description: "
